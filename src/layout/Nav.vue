@@ -28,6 +28,7 @@
                     return item.path != "/"
                 })
             })
+            cosnole.log(123)
             let leftMenu = computed(()=>{
                 return store.state.app.leftMenu
             })
