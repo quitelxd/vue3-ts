@@ -3,7 +3,11 @@
         <Aside></Aside>
         <div class="right" :class="{width : !leftMenu}">
             <Nav></Nav>
-            <router-view/>
+            <div class="content">
+                <el-scrollbar style="height: 100%;">
+                    <router-view/>
+                </el-scrollbar>
+            </div>
         </div>
     </div>
 </template>
@@ -41,12 +45,17 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: skyblue;
+        background: #f8f8f8;
         .right{
+            height: 100%;
             transition: .5s;
             margin-left: @leftMenuWidth;
             &.width{
                 margin-left: 0;
+            }
+            .content{
+                height: calc(100% - 70px);
+                padding: 10px;
             }
         }
     }

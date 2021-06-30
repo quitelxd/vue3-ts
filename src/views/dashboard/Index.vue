@@ -1,6 +1,11 @@
 <template>
     <div>
-        dashboard组件
+        <p>dashboard组件</p>
+        <p>dashboard组件</p>
+        <p>dashboard组件</p>
+        <p>dashboard组件</p>
+        <p>dashboard组件</p>
+        <p>dashboard组件</p>
     </div>
 </template>
 
@@ -19,5 +24,7 @@
 </script>
 
 <style scoped>
-
+p{
+    height: 100px;
+}
 </style>

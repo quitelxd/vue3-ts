@@ -9,4 +9,6 @@ import "@/less/main.less"
 
 import store from "@/store/index"
 
+import '@/utils/permission'
+
 createApp(App).use(router).use(ElementPlus).use(store).mount('#app')
