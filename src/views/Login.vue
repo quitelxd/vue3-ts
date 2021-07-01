@@ -23,12 +23,13 @@
 <script lang="ts">
     import {defineComponent, reactive, toRefs, ref} from 'vue';
     import {setToken} from "@/utils";
-    import {useRouter} from "vue-router"
+    import {useRouter,useRoute} from "vue-router"
 
     export default defineComponent({
         name: "Login",
         setup() {
             let router = useRouter();
+            let route = useRoute();
             let formRef = ref(null)
             let data = reactive({
                 form: {
@@ -47,9 +48,10 @@
             const submit = (): void => {
                 (formRef.value as any).validate((valid: boolean) => {
                     if (valid) {
-                        console.log(data.form)
+                        let redirect = route.query.redirect ? route.query.redirect : "/"
                         setToken("akjsdfhakjdhfkasdfjkhaslkdjf");
-                        router.push("/dashboard")
+                        router.push((redirect as string))
+                        // path: state.redirect || '/',
                     } else {
                         alert("填啊！！！")
                         return false
