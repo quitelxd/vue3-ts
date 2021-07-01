@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c910c"],{"580c":function(c,n,a){"use strict";a.r(n);var t=a("7a23"),e=Object(t["fb"])("data-v-48a15c94"),d=e((function(c,n,a,e,d,i){return Object(t["D"])(),Object(t["i"])("div",null," WangEditor ")})),i={name:"WangEditor"};i.render=d,i.__scopeId="data-v-48a15c94";n["default"]=i}}]);
+//# sourceMappingURL=chunk-2d0c910c.c40bdb64.js.map
