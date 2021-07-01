@@ -2,13 +2,13 @@
     <div id="map">
     </div>
 </template>
-<script lang="ts">
+<script>
     import {defineComponent, reactive, onMounted} from 'vue';
     import 'ol/ol.css';
     import {Map, View} from 'ol';
     import TileLayer from 'ol/layer/Tile';
     import XYZ from 'ol/source/XYZ'
-    import {transform} from 'ol/proj'
+    import {transform} from "ol/proj"
 
     export default defineComponent({
         name: "Openlayer",
