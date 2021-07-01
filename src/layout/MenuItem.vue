@@ -1,14 +1,14 @@
 <template>
     <el-submenu :index="item.path" v-if="item.children && item.children.length >= 0">
         <template #title>
-            <i class="el-icon-location"></i>
+            <i :class="item.meta.icon"></i>
             <span>{{item.meta.name}}</span>
         </template>
         <MenuItem v-for="child in item.children" :p-path="item.path" :item="child" :key="child.path"></MenuItem>
     </el-submenu>
     <el-menu-item :index="item.path" v-else>
         <div @click="toRoute(item.path)">
-            <i class="el-icon-menu"></i>
+            <i :class="item.meta.icon"></i>
             <span>{{item.meta.name}}</span>
         </div>
     </el-menu-item>
@@ -49,6 +49,6 @@
     })
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 </style>

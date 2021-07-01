@@ -38,7 +38,7 @@
     import {getTest} from "@/api/test";
 
     export default defineComponent({
-        name: 'Dashboard',
+        name: 'Introduce',
         setup() {
             let data = reactive({
                 listData: []
