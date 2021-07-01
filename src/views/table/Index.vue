@@ -1,5 +1,4 @@
 <template>
-    table
     <router-view></router-view>
 </template>
 

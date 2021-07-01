@@ -10,17 +10,17 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     {
         path: "/",
         component: Layout,
-        redirect: '/dashboard',
+        redirect: '/introduce',
         meta: {
             name: "首页"
         },
         children: [
             {
-                path: '/dashboard',
-                component: ()=> import('@/views/dashboard/Index.vue'),
-                name: 'Dashboard',
+                path: '/introduce',
+                component: ()=> import('@/views/introduce/Index.vue'),
+                name: 'Introduce',
                 meta: {
-                    name: "图表"
+                    name: "简介"
                 },
             },
             {
