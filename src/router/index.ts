@@ -13,7 +13,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
         redirect: '/introduce',
         meta: {
             name: "首页",
-            icon:""
+            icon: ""
         },
         children: [
             {
@@ -22,7 +22,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 name: 'Introduce',
                 meta: {
                     name: "简介",
-                    icon:"iconfont icon-jianjie"
+                    icon: "iconfont icon-jianjie"
                 },
             },
             {
@@ -30,7 +30,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/echarts/Echarts.vue'),
                 meta: {
                     name: "echarts",
-                    icon:"iconfont icon-tubiao"
+                    icon: "iconfont icon-tubiao"
                 }
             },
             {
@@ -38,7 +38,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/table/Index.vue'),
                 meta: {
                     name: "表格",
-                    icon:"iconfont icon-biaoge"
+                    icon: "iconfont icon-biaoge"
                 },
                 children: [
                     {
@@ -46,7 +46,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/table/Table.vue'),
                         meta: {
                             name: "饿了么table",
-                            icon:"iconfont icon-eleme"
+                            icon: "iconfont icon-eleme"
                         },
                     },
                     {
@@ -54,7 +54,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/table/EasyTable.vue'),
                         meta: {
                             name: "EasyTable",
-                            icon:"iconfont icon-biaoge"
+                            icon: "iconfont icon-biaoge"
                         },
                     }
                 ]
@@ -64,7 +64,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/map/Index.vue'),
                 meta: {
                     name: "地图",
-                    icon:"iconfont icon-ditu"
+                    icon: "iconfont icon-ditu"
                 },
                 children: [
                     {
@@ -72,7 +72,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/map/BMap.vue'),
                         meta: {
                             name: "百度地图",
-                            icon:"iconfont icon-iconbaiduditu"
+                            icon: "iconfont icon-iconbaiduditu"
                         },
                     },
                     {
@@ -80,7 +80,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/map/GMap.vue'),
                         meta: {
                             name: "高德地图",
-                            icon:"iconfont icon-mapOfGaud"
+                            icon: "iconfont icon-mapOfGaud"
                         },
                     },
                     {
@@ -88,7 +88,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/map/TMap.vue'),
                         meta: {
                             name: "天地图",
-                            icon:"iconfont icon-tianditu"
+                            icon: "iconfont icon-tianditu"
                         },
                     },
                     {
@@ -96,7 +96,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                         component: () => import('@/views/map/Openlayer.vue'),
                         meta: {
                             name: "Openlayer",
-                            icon:"iconfont icon-OpenLayers"
+                            icon: "iconfont icon-OpenLayers"
                         },
                     }
                 ]
@@ -106,7 +106,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/canvas/Index.vue'),
                 meta: {
                     name: "fabric",
-                    icon:"iconfont icon-canvas"
+                    icon: "iconfont icon-canvas"
                 },
             },
             {
@@ -114,19 +114,28 @@ export const constantRoutes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/editor/Index.vue'),
                 meta: {
                     name: "富文本",
-                    icon:"iconfont icon-fuwenben"
+                    icon: "iconfont icon-fuwenben"
                 },
-                children:[
+                children: [
                     {
-                        path:'wangEditor',
+                        path: 'wangEditor',
                         component: () => import('@/views/editor/WangEditor.vue'),
                         meta: {
                             name: "wangEditor",
-                            icon:"iconfont icon-alibaba1193368easyiconnet"
+                            icon: "iconfont icon-alibaba1193368easyiconnet"
                         },
                     }
                 ]
             },
+            {
+                path: "/css",
+                component: () => import('@/views/css/Index.vue'),
+                meta: {
+                    name: "Css问题",
+                    icon: "iconfont icon-alibaba1193368easyiconnet"
+                },
+            }
+
         ]
     },
 

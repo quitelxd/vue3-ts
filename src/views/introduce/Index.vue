@@ -58,8 +58,8 @@
     });
 </script>
 
-<style scoped>
-    p {
-        height: 100px;
+<style scoped lang="less">
+    .fontWeight2{
+        font-weight: 800;
     }
 </style>
