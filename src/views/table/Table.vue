@@ -63,42 +63,41 @@
 
 <script lang="ts">
     import {defineComponent, reactive, toRefs, onMounted} from 'vue';
-    import {Table} from '@/setup/table'
+    import {TableFun, Table} from './tableTs/Table'
 
+    const tableClass = new TableFun();
     export default defineComponent({
         name: "Table",
-        setup() {
+        setup: function () {
             let data = reactive({
-                tableData: [{
-                    date: '2021年7月1日 08:50:07',
-                    name: "linxd",
-                    address: "黑龙江哈尔滨"
-                }],
+                tableData: [],
                 searchName: "",
                 searchAddress: "",
                 ...Table
             })
             onMounted(() => {
-                for (let i = 0; i < 10; i++) {
-                    data.tableData.push(data.tableData[0]);
-                }
+                data.tableData = TableFun.getData({page: data.page, size: data.size});
             })
-            let showInfo = (row:any, index:number) => {
+            let showInfo = (row: any, index: number) => {
                 console.log(row, index)
             }
             let searchFun = () => {
-                console.log(data.searchName)
-                console.log(data.searchAddress)
+                data.tableData = tableClass.search({page: data.page, size: data.size}, {
+                    name: data.searchName,
+                    address: data.searchAddress
+                });
             }
             let reset = () => {
                 data.searchName = "";
                 data.searchAddress = "";
             }
             const handleSizeChange = (e: number) => {
-                console.log(e)
+                data.size = e;
+                data.tableData = TableFun.getData({page: data.page, size: data.size});
             }
             const handleCurrentChange = (e: number) => {
-                console.log(e)
+                data.page = e;
+                data.tableData = TableFun.getData({page: data.page, size: data.size});
             }
 
             return {
