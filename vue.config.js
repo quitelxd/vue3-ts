@@ -3,9 +3,8 @@ const path = require('path')
 module.exports = {
     // 选项...
     outputDir:"docs",
-    publicPath: './',
+    publicPath: process.env.VUE_APP_PATH,
     lintOnSave: 'warning',
-
     pluginOptions: {
       'style-resources-loader': {
         preProcessor: 'less',
@@ -13,5 +12,6 @@ module.exports = {
             path.resolve(__dirname, 'src/less/var.scss'),
         ]
       }
-    }
+    },
+
 }

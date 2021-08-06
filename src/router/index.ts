@@ -1,7 +1,7 @@
-import {createRouter, createWebHashHistory, RouteRecordRaw} from "vue-router";
+import {createRouter, createWebHistory, RouteRecordRaw, createWebHashHistory} from "vue-router";
 import Layout from "@/views/Layout.vue";
 
-export const constantRoutes: Array<RouteRecordRaw> = [
+export const constantRoutes: RouteRecordRaw[] = [
     {
         path: "/login",
         component: () => import('@/views/Login.vue'),
@@ -140,9 +140,8 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     },
 
 ];
-
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(process.env.VUE_APP_PATH),
     routes: constantRoutes
 });
 
