@@ -30,7 +30,7 @@ class TableFun {
         return data;
     }
 
-    search(table: Table, search: Search): any {
+    static search(table: Table, search: Search): any {
         return TableFun.getData(table, search);
     }
 }

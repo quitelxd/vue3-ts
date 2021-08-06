@@ -65,7 +65,6 @@
     import {defineComponent, reactive, toRefs, onMounted} from 'vue';
     import {TableFun, Table} from './tableTs/Table'
 
-    const tableClass = new TableFun();
     export default defineComponent({
         name: "Table",
         setup: function () {
@@ -82,7 +81,7 @@
                 console.log(row, index)
             }
             let searchFun = () => {
-                data.tableData = tableClass.search({page: data.page, size: data.size}, {
+                data.tableData = TableFun.search({page: data.page, size: data.size}, {
                     name: data.searchName,
                     address: data.searchAddress
                 });

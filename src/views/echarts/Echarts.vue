@@ -15,12 +15,13 @@
 </template>
 
 <script lang="ts">
-    import {defineComponent, onMounted, reactive, inject} from 'vue'
+    import {defineComponent, onMounted, onUnmounted, inject} from 'vue'
 
     export default defineComponent({
         name: "echarts",
         setup() {
             let echarts: any = inject("echarts")
+            let myChart:any = null,myChart1:any = null;
             let myChartOption = {
                 title: {
                     text: 'ECharts 入门示例'
@@ -49,7 +50,6 @@
                     type: 'line'
                 }]
             }
-            let myChart: any = null;
             let change = (): void => {
                 myChart.setOption({
                     title: {
@@ -70,8 +70,12 @@
                 window.onresize = function () {//自适应大小
                     myChart.resize();
                 };
-                let myChart1 = echarts.init((document.getElementById('myChart1') as HTMLElement));
+                myChart1 = echarts.init((document.getElementById('myChart1') as HTMLElement));
                 myChart1.setOption(myChartOption1);
+            })
+            onUnmounted(()=>{
+                myChart.dispose();
+                myChart1.dispose();
             })
             return {
                 change
