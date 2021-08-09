@@ -140,6 +140,7 @@ export const constantRoutes: RouteRecordRaw[] = [
     },
 
 ];
+console.log("process.env.VUE_APP_BASE_PATH"+process.env.VUE_APP_BASE_PATH)
 const router = createRouter({
     history: createWebHistory(process.env.VUE_APP_BASE_PATH),
     routes: constantRoutes
