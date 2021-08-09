@@ -141,7 +141,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 
 ];
 const router = createRouter({
-    history: process.env.VUE_APP_TYPE === 'github' ? createWebHashHistory() : createWebHistory(process.env.VUE_APP_BASE_PATH),
+    history: process.env.VUE_APP_TYPE === 'github' ? createWebHashHistory() : createWebHistory(process.env.BASE_URL),
     routes: constantRoutes
 });
 
