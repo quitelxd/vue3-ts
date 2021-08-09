@@ -141,7 +141,7 @@ export const constantRoutes: RouteRecordRaw[] = [
 
 ];
 const router = createRouter({
-    history: createWebHistory(process.env.VUE_APP_PATH),
+    history: createWebHistory(process.env.VUE_APP_BASE_PATH),
     routes: constantRoutes
 });
 
