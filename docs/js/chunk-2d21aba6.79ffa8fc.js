@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d21aba6"],{bd6d:function(d,e,n){"use strict";n.r(e);var a=n("7a23"),t=Object(a["fb"])("data-v-7929f860"),r=t((function(d,e,n,a,t,r){return" 当元素 width:100% 时 ；如果 border:1px solid red; 就会出现滚动条 "})),c=Object(a["n"])({name:"Index"});c.render=r,c.__scopeId="data-v-7929f860";e["default"]=c}}]);
+//# sourceMappingURL=chunk-2d21aba6.79ffa8fc.js.map
