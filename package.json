@@ -9,6 +9,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@antv/g2plot": "^2.4.31",
+    "@antv/s2": "^1.49.1",
+    "@antv/x6": "^2.13.1",
+    "@antv/x6-plugin-dnd": "^2.0.6",
+    "@antv/x6-plugin-export": "^2.1.6",
+    "@antv/x6-plugin-stencil": "^2.1.4",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "echarts": "^5.1.2",
@@ -16,7 +22,9 @@
     "fabric": "^4.5.1",
     "less": "^4.1.1",
     "less-loader": "^7.3.0",
+    "lodash": "^4.17.21",
     "ol": "^6.5.0",
+    "three": "0.148.0",
     "vue": "^3.0.0",
     "vue-router": "4.0",
     "vuex": "^4.0.2",

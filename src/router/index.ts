@@ -26,12 +26,30 @@ export const constantRoutes: RouteRecordRaw[] = [
                 },
             },
             {
-                path: "/echarts",
-                component: () => import('@/views/echarts/Echarts.vue'),
+                path: "/charts",
+                component: () => import('@/views/echarts/Charts.vue'),
                 meta: {
-                    name: "echarts",
+                    name: "图表",
                     icon: "iconfont icon-tubiao"
-                }
+                },
+                children: [
+                    {
+                        path: 'echarts',
+                        component: () => import('@/views/echarts/Echarts.vue'),
+                        meta: {
+                            name: "echarts",
+                            icon: "iconfont icon-tubiao"
+                        },
+                    },
+                    {
+                        path: 'AntVG2',
+                        component: () => import('@/views/echarts/AntVG2.vue'),
+                        meta: {
+                            name: "AntV G2",
+                            icon: "iconfont icon-keshihuatubiao-"
+                        },
+                    },
+                ]
             },
             {
                 path: "/table",
@@ -55,6 +73,14 @@ export const constantRoutes: RouteRecordRaw[] = [
                         meta: {
                             name: "EasyTable",
                             icon: "iconfont icon-biaoge"
+                        },
+                    },
+                    {
+                        path: 'AntVS2',
+                        component: () => import('@/views/table/AntVS2.vue'),
+                        meta: {
+                            name: "AntV S2",
+                            icon: "iconfont icon-ic-header-report"
                         },
                     }
                 ]
@@ -134,8 +160,41 @@ export const constantRoutes: RouteRecordRaw[] = [
                     name: "Css问题",
                     icon: "iconfont icon-alibaba1193368easyiconnet"
                 },
-            }
-
+            },
+            {
+                path: "/three",
+                component: () => import('@/views/three/Index.vue'),
+                meta: {
+                    name: "Three.js",
+                    icon: "iconfont icon-alibaba1193368easyiconnet"
+                },
+            },
+            {
+                path: "/flow",
+                component: () => import('@/views/flow/Index.vue'),
+                meta: {
+                    name: "流程图",
+                    icon: "iconfont icon-jurassic_process"
+                },
+                children: [
+                    {
+                        path: 'AntVX6',
+                        component: () => import('@/views/flow/AntVX6.vue'),
+                        meta: {
+                            name: "AntV X6",
+                            icon: "iconfont icon-SCMliucheng"
+                        },
+                    },
+                    {
+                        path: 'bpmn',
+                        component: () => import('@/views/flow/bpmn.vue'),
+                        meta: {
+                            name: "bpmn.js",
+                            icon: "iconfont icon-liuchengguanli-"
+                        },
+                    }
+                ]
+            },
         ]
     },
 

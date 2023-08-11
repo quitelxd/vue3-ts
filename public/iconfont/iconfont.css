@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2644936 */
-  src: url('iconfont.woff2?t=1625119700087') format('woff2'),
-       url('iconfont.woff?t=1625119700087') format('woff'),
-       url('iconfont.ttf?t=1625119700087') format('truetype');
+  src: url('iconfont.woff2?t=1691733355623') format('woff2'),
+       url('iconfont.woff?t=1691733355623') format('woff'),
+       url('iconfont.ttf?t=1691733355623') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-SCMliucheng:before {
+  content: "\e602";
+}
+
+.icon-liuchengguanli-:before {
+  content: "\e605";
+}
+
+.icon-ic-header-report:before {
+  content: "\e61d";
+}
+
+.icon-keshihuatubiao-:before {
+  content: "\e633";
+}
+
+.icon-jurassic_process:before {
+  content: "\e6c4";
 }
 
 .icon-alibaba1193368easyiconnet:before {

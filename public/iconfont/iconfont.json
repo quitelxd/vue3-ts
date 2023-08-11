@@ -6,6 +6,41 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1263225",
+      "name": "SCM流程",
+      "font_class": "SCMliucheng",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "4657676",
+      "name": "流程管理",
+      "font_class": "liuchengguanli-",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "4010775",
+      "name": "ic-header-report",
+      "font_class": "ic-header-report",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "3453550",
+      "name": "可视化图标0.7-22",
+      "font_class": "keshihuatubiao-",
+      "unicode": "e633",
+      "unicode_decimal": 58931
+    },
+    {
+      "icon_id": "10595634",
+      "name": "工作流程-流程-状态_jurassic",
+      "font_class": "jurassic_process",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
       "icon_id": "316284",
       "name": "alibaba_1193368_easyicon.net",
       "font_class": "alibaba1193368easyiconnet",

@@ -1,5 +1,5 @@
 <template>
-    当元素 width:100% 时 ；如果 border:1px solid red; 就会出现滚动条
+    <div style="width: 100%;height: 30px;background: #000;"></div>
 </template>
 
 <script type="ts">
