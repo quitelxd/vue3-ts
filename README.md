@@ -28,3 +28,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
 vue3.0+ts+less+router4.x+vuex4.x，本人正在学习借鉴中，请指导
+
+集成 AntVG2 echarts AntVS2 OpenLayer fabric wangEditor Three.js（初识） AntV X6 bpmn.js（未完成）

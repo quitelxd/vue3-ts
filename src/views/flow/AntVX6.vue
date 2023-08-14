@@ -16,7 +16,7 @@
     import {createBlock, showPorts, block, reverseObject} from './hook/UseAntVFlow'
     import {Export} from '@antv/x6-plugin-export';
     import {ElMessage} from 'element-plus';
-    import {reverse} from 'lodash'
+    import {uniqBy} from 'lodash'
 
 
     export default defineComponent({
@@ -30,6 +30,7 @@
 
 
             let graph;
+
             function init() {
                 // #region 初始化画布
                 graph = new Graph({
@@ -165,35 +166,37 @@
             }
 
             function exportPng() {
-                graph.exportPNG('chart',{
-                })
+                graph.exportPNG('chart', {})
             }
+
             function exportSvg() {
                 ElMessage.warning("tmd不好使，暂且先这样")
-                graph.exportSVG('chart',{
+                graph.exportSVG('chart', {
                     preserveDimensions: true
                 })
             }
+
             function getShape() {
                 ElMessage.success("结果请看控制台")
                 // console.log(graph)
-                console.log('画布所有东西包括线',graph.getCells())
-                console.log('节点不带线',graph.getNodes())
-                const line = graph.getCells().filter(item=>item.shape === 'edge')
-                const allblock = {}
-                graph.getNodes().forEach(item=>{
-                    allblock[item['id']] = item
-                })
-                let obj = {}
-                line.forEach(item=>{
+                console.log('画布所有东西包括线', graph.getCells())
+                console.log('节点不带线', graph.getNodes())
+                const line = graph.getCells().filter(item => item.shape === 'edge')
+                const blocks = graph.getNodes()
+                let blocksSort:any[] = []
+                line.forEach(item => {
                     const sourceId = item['source']['cell']
                     const targetId = item['target']['cell']
-                    obj[sourceId] = allblock[sourceId]
-                    if(obj[targetId] === undefined){
-                        obj[targetId] = allblock[targetId]
-                    }
+                    blocks.forEach(b => {
+                        if (b.id === sourceId) {
+                            blocksSort.push(b)
+                        }
+                        if (b.id === targetId) {
+                            blocksSort.push(b)
+                        }
+                    })
                 })
-                console.log("这里的顺序是有问题的需要调整",obj)
+                console.log("这里的顺序是有问题的需要调整", uniqBy(blocksSort,'id'))
             }
 
             return {
