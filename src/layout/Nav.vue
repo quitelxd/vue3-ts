@@ -14,23 +14,35 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { useAppStore } from '@/stores/app'
-import { useUserStore } from '@/stores/user'
-import { storeToRefs } from 'pinia'
+<script lang="ts">
+    import {defineComponent, computed,ref} from 'vue';
+    import {useRoute} from "vue-router";
+    import { useStore } from 'vuex';
 
-const appStore = useAppStore()
-const userStore = useUserStore()
-const { isCollapse } = storeToRefs(appStore)
-const { userInfo } = storeToRefs(userStore)
-
-const toggleCollapse = () => {
-    appStore.toggleCollapse()
-}
-
-const handleLogout = () => {
-    userStore.logout()
-}
+    export default defineComponent({
+        setup() {
+            const store = useStore()
+            const route = useRoute();
+            let bread= computed(()=> {
+                return route.matched.filter(item=>{
+                    return item.path != "/"
+                })
+            })
+            let leftMenu = computed(()=>{
+                return store.state.app.leftMenu
+            })
+            function leftMenuFun() {
+                store.commit('app/CHANGE_MENU')
+            }
+            return{
+                bread,
+                leftMenu,
+                leftMenuFun
+            }
+        },
+        name: 'Nav',
+        components: {}
+    });
 </script>
 
 <style scoped lang="less">

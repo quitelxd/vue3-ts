@@ -1,7 +1,7 @@
 <template>
-    <div class="layout" :class="{ 'is-collapse': !isCollapse }">
+    <div class="layout">
         <Aside></Aside>
-        <div class="right" :class="{ width: isCollapse }">
+        <div class="right" :class="{width : !leftMenu}">
             <Nav></Nav>
             <div class="content">
                 <el-scrollbar style="height: 100%;">
@@ -12,14 +12,28 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import Nav from "@/layout/Nav.vue"
-import Aside from "@/layout/Aside.vue"
-import { useAppStore } from '@/stores/app'
-import { storeToRefs } from 'pinia'
+<script lang="ts">
+    import {defineComponent,computed} from 'vue';
+    import Nav from "@/layout/Nav.vue";
+    import Aside from "@/layout/Aside.vue";
+    import {useStore} from "vuex";
 
-const appStore = useAppStore()
-const { isCollapse } = storeToRefs(appStore)
+    export default defineComponent({
+        setup(){
+            let store = useStore();
+            let leftMenu = computed(():boolean=>{
+                return store.state.app.leftMenu
+            })
+            return {
+                leftMenu
+            }
+        },
+        name: 'Layout',
+        components: {
+            Nav,
+            Aside
+        }
+    });
 </script>
 
 <style scoped lang="less">

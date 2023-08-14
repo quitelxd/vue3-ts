@@ -1,5 +1,5 @@
 <template>
-    <div class="aside" :class="{ width: isCollapse }">
+    <div class="aside" :class="{width:!leftMenu}">
         <div class="logo">
             <img src="../assets/logo.png" alt="">
             逆水行舟
@@ -8,13 +8,25 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { useAppStore } from '@/stores/app'
-import { storeToRefs } from 'pinia'
-import Menu from './Menu.vue'
-
-const appStore = useAppStore()
-const { isCollapse, menuList } = storeToRefs(appStore)
+<script lang="ts">
+    import {defineComponent, computed,ref} from 'vue';
+    import {useStore} from 'vuex';
+    import Menu from './Menu.vue';
+    export default defineComponent({
+        name: "Aside",
+        components:{
+            Menu
+        },
+        setup(){
+            const store = useStore();
+            let leftMenu = computed(()=>{
+                return store.state.app.leftMenu
+            })
+            return {
+                leftMenu
+            }
+        }
+    })
 </script>
 
 <style scoped lang="less">

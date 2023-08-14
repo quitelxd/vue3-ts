@@ -2,19 +2,22 @@
     <router-view/>
 </template>
 
-<script setup lang="ts">
-import * as echarts from 'echarts'
-import { provide } from 'vue'
-import { useUserStore } from '@/stores/user'
-import { useAppStore } from '@/stores/app'
+<script lang="ts">
+    import {defineComponent,provide} from 'vue';
+    import * as echarts from 'echarts';
 
-provide('echarts', echarts)
-
-const userStore = useUserStore()
-const appStore = useAppStore()
+    export default defineComponent({
+        name: 'App',
+        setup(){
+            provide('echarts',echarts)//provid
+        },
+        components: {
+        }
+    });
 </script>
 
 <style lang="less">
-#app {
-}
+    #app{
+
+    }
 </style>
