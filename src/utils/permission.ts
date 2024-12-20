@@ -5,24 +5,22 @@
 */
 
 import router from "@/router";
-import {getToken} from "@/utils/index";
+import { useUserStore } from '@/stores/user'
 
-const whiteList = ['/login']
 router.beforeEach(async (to, from, next)=>{
-    if(getToken()){
-
+    const userStore = useUserStore()
+    
+    if (userStore.token) {
         if (to.path === '/login') {
-            next({path: '/'})
+            next('/')
         } else {
             next()
         }
-    }else{
-        if (whiteList.indexOf(to.path) !== -1) {
-            // 在免登录白名单，直接进入
+    } else {
+        if (to.path === '/login') {
             next()
         } else {
-            next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
+            next('/login')
         }
     }
-
 })
