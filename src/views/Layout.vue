@@ -12,28 +12,16 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent,computed} from 'vue';
-    import Nav from "@/layout/Nav.vue";
-    import Aside from "@/layout/Aside.vue";
-    import {useStore} from "vuex";
+<script setup>
+import { computed } from 'vue'
+import Nav from "@/layout/Nav.vue"
+import Aside from "@/layout/Aside.vue"
+import { useStore } from "vuex"
 
-    export default defineComponent({
-        setup(){
-            let store = useStore();
-            let leftMenu = computed(():boolean=>{
-                return store.state.app.leftMenu
-            })
-            return {
-                leftMenu
-            }
-        },
-        name: 'Layout',
-        components: {
-            Nav,
-            Aside
-        }
-    });
+const store = useStore()
+const leftMenu = computed(() => {
+    return store.state.app.leftMenu
+})
 </script>
 
 <style scoped lang="less">

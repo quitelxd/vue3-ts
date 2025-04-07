@@ -14,39 +14,32 @@
     </el-menu-item>
 </template>
 
-<script lang="ts">
-    import {defineComponent} from 'vue';
-    import {useRouter} from 'vue-router'
+<script setup>
+import { useRouter } from 'vue-router'
+import { defineProps } from 'vue'
 
-    export default defineComponent({
-        name: "MenuItem",
-        props: {
-            item: {
-                type: Object,
-                require: true,
-            },
-            pPath:{
-                type:String
-            }
-        },
-        setup(props) {
-            let router = useRouter();
-            const toRoute = (path: string): void => {
-                let routerStr = "";
-                if(path.split('/').length > 1){
-                    routerStr = path
-                }else{
-                    routerStr = props.pPath + '/' + path
-                }
-                router.push(routerStr).catch((err) => {
-                    console.log("跳转错误")
-                })
-            }
-            return {
-                toRoute
-            }
-        }
+const props = defineProps({
+    item: {
+        type: Object,
+        required: true,
+    },
+    pPath: {
+        type: String
+    }
+})
+
+const router = useRouter()
+const toRoute = (path) => {
+    let routerStr = ""
+    if(path.split('/').length > 1){
+        routerStr = path
+    }else{
+        routerStr = props.pPath + '/' + path
+    }
+    router.push(routerStr).catch(() => {
+        console.log("跳转错误")
     })
+}
 </script>
 
 <style scoped lang="less">

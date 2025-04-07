@@ -2,7 +2,6 @@ import axios from 'axios'
 import {ElMessage} from 'element-plus';
 import errorCode from './requestCode'
 
-
 const serve = axios.create({
     baseURL: ""
 })
@@ -18,7 +17,7 @@ serve.interceptors.response.use(res => {
     const url = res.config.url;
     const code = res.data.code || 200;
     // 获取错误信息
-    const msg: string = (errorCode as any)[code] || res.data.msg || errorCode['default']
+    const msg = errorCode[code] || res.data.msg || errorCode['default']
     if (code == 401) {
         ElMessage({
             message: '登录状态已过期，请重新登录！',
@@ -44,4 +43,4 @@ serve.interceptors.response.use(res => {
     return Promise.reject(error)
 })
 
-export default serve
+export default serve 

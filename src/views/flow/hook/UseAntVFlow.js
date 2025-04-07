@@ -1,7 +1,7 @@
 import {Graph, Shape} from '@antv/x6'
 
 // 控制连接桩显示/隐藏
-export const showPorts = (ports: NodeListOf<SVGElement>, show: boolean) => {
+export const showPorts = (ports, show) => {
     for (let i = 0, len = ports.length; i < len; i = i + 1) {
         ports[i].style.visibility = show ? 'visible' : 'hidden'
     }
@@ -207,104 +207,34 @@ export function createBlock() {
         },
         true,
     )
-
 }
 
 export function block(graph) {
-    return {
-        imageShapes: [
-            {
-                label: 'Client',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/687b6cb9-4b97-42a6-96d0-34b3099133ac.svg',
-            },
-            {
-                label: 'Http',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/dc1ced06-417d-466f-927b-b4a4d3265791.svg',
-            },
-            {
-                label: 'Api',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/c55d7ae1-8d20-4585-bd8f-ca23653a4489.svg',
-            },
-            {
-                label: 'Sql',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/6eb71764-18ed-4149-b868-53ad1542c405.svg',
-            },
-            {
-                label: 'Clound',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/c36fe7cb-dc24-4854-aeb5-88d8dc36d52e.svg',
-            },
-            {
-                label: 'Mq',
-                image:
-                    'https://gw.alipayobjects.com/zos/bmw-prod/2010ac9f-40e7-49d4-8c4a-4fcf2f83033b.svg',
-            },
-        ],
-        r1: graph.createNode({
-            shape: 'custom-rect',
+    return [
+        {
             label: '开始',
-            attrs: {
-                body: {
-                    rx: 20,
-                    ry: 26,
-                },
-            },
-        }),
-        r2: graph.createNode({
-            shape: 'custom-rect',
-            label: '过程',
-        }),
-        r3: graph.createNode({
-            shape: 'custom-rect',
-            attrs: {
-                body: {
-                    rx: 6,
-                    ry: 6,
-                },
-            },
-            label: '可选过程',
-        }),
-        r4: graph.createNode({
-            shape: 'custom-polygon',
-            attrs: {
-                body: {
-                    refPoints: '0,10 10,0 20,10 10,20',
-                },
-            },
-            label: '决策',
-        }),
-        r5: graph.createNode({
-            shape: 'custom-polygon',
-            attrs: {
-                body: {
-                    refPoints: '10,0 40,0 30,20 0,20',
-                },
-            },
-            label: '数据',
-        }),
-        r6: graph.createNode({
             shape: 'custom-circle',
-            label: '连接',
-        })
-    }
+        },
+        {
+            label: '过程',
+            shape: 'custom-rect',
+        },
+        {
+            label: '决策',
+            shape: 'custom-polygon',
+            points: '40,0 80,40 40,80 0,40',
+        },
+        {
+            label: '结束',
+            shape: 'custom-circle',
+        },
+    ]
 }
 
 export function reverseObject(object) {
-    const newObject = {};
-    const keys: any = [];
-
-    for (const key in object) {
-        keys.push(key);
+    const newObject = {}
+    for (const [key, value] of Object.entries(object)) {
+        newObject[value] = key
     }
-
-    for (let i = keys.length - 1; i >= 0; i--) {
-        const value = object[keys[i]];
-        newObject[keys[i]] = value;
-    }
-
-    return newObject;
-}
+    return newObject
+} 

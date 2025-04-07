@@ -14,35 +14,27 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent, computed,ref} from 'vue';
-    import {useRoute} from "vue-router";
-    import { useStore } from 'vuex';
+<script setup>
+import { computed } from 'vue';
+import { useRoute } from "vue-router";
+import { useStore } from 'vuex';
 
-    export default defineComponent({
-        setup() {
-            const store = useStore()
-            const route = useRoute();
-            let bread= computed(()=> {
-                return route.matched.filter(item=>{
-                    return item.path != "/"
-                })
-            })
-            let leftMenu = computed(()=>{
-                return store.state.app.leftMenu
-            })
-            function leftMenuFun() {
-                store.commit('app/CHANGE_MENU')
-            }
-            return{
-                bread,
-                leftMenu,
-                leftMenuFun
-            }
-        },
-        name: 'Nav',
-        components: {}
-    });
+const store = useStore()
+const route = useRoute();
+
+const bread = computed(() => {
+    return route.matched.filter(item => {
+        return item.path != "/"
+    })
+})
+
+const leftMenu = computed(() => {
+    return store.state.app.leftMenu
+})
+
+const leftMenuFun = () => {
+    store.commit('app/CHANGE_MENU')
+}
 </script>
 
 <style scoped lang="less">

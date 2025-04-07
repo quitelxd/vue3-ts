@@ -7,4 +7,4 @@ const store = createStore({
     mutations: {}
 })
 
-export default store;
+export default store; 

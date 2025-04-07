@@ -1,8 +1,6 @@
-
 const mutations = {
-    CHANGE_MENU(state:any):void{
+    CHANGE_MENU(state) {
         state.leftMenu = !state.leftMenu
     },
 }
-export default mutations
-
+export default mutations 

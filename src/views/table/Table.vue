@@ -60,55 +60,49 @@
     </div>
 </template>
 
+<script setup>
+import { reactive, toRefs, onMounted } from 'vue';
+import { TableFun, Table } from './tableTs/Table'
 
-<script lang="ts">
-    import {defineComponent, reactive, toRefs, onMounted} from 'vue';
-    import {TableFun, Table} from './tableTs/Table'
+const data = reactive({
+    tableData: [],
+    searchName: "",
+    searchAddress: "",
+    ...Table
+})
 
-    export default defineComponent({
-        name: "Table",
-        setup: function () {
-            let data = reactive({
-                tableData: [],
-                searchName: "",
-                searchAddress: "",
-                ...Table
-            })
-            onMounted(() => {
-                data.tableData = TableFun.getData({page: data.page, size: data.size});
-            })
-            let showInfo = (row: any, index: number) => {
-                console.log(row, index)
-            }
-            let searchFun = () => {
-                data.tableData = TableFun.search({page: data.page, size: data.size}, {
-                    name: data.searchName,
-                    address: data.searchAddress
-                });
-            }
-            let reset = () => {
-                data.searchName = "";
-                data.searchAddress = "";
-            }
-            const handleSizeChange = (e: number) => {
-                data.size = e;
-                data.tableData = TableFun.getData({page: data.page, size: data.size});
-            }
-            const handleCurrentChange = (e: number) => {
-                data.page = e;
-                data.tableData = TableFun.getData({page: data.page, size: data.size});
-            }
+onMounted(() => {
+    data.tableData = TableFun.getData({page: data.page, size: data.size});
+})
 
-            return {
-                ...toRefs(data),
-                showInfo,
-                searchFun,
-                reset,
-                handleSizeChange,
-                handleCurrentChange
-            }
-        },
-    })
+const showInfo = (row, index) => {
+    console.log(row, index)
+}
+
+const searchFun = () => {
+    data.tableData = TableFun.search({page: data.page, size: data.size}, {
+        name: data.searchName,
+        address: data.searchAddress
+    });
+}
+
+const reset = () => {
+    data.searchName = "";
+    data.searchAddress = "";
+}
+
+const handleSizeChange = (e) => {
+    data.size = e;
+    data.tableData = TableFun.getData({page: data.page, size: data.size});
+}
+
+const handleCurrentChange = (e) => {
+    data.page = e;
+    data.tableData = TableFun.getData({page: data.page, size: data.size});
+}
+
+// 将响应式数据解构并暴露给模板
+const { tableData, searchName, searchAddress, page, size, total } = toRefs(data)
 </script>
 
 <style scoped>

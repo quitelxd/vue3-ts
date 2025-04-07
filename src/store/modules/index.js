@@ -1,9 +1,9 @@
-const files = require.context('.', true, /\.ts$/)
-const modules: any = {}
+const files = require.context('.', true, /\.js$/)
+const modules = {}
 
 files.keys().forEach((key) => {
-    if (key === './index.ts') return
-    const path = key.replace(/(\.\/|\.ts)/g, '')
+    if (key === './index.js') return
+    const path = key.replace(/(\.\/|\.js)/g, '')
     const [namespace, imported] = path.split('/')
     if (!modules[namespace]) {
         modules[namespace] = {
@@ -13,4 +13,4 @@ files.keys().forEach((key) => {
     modules[namespace][imported] = files(key).default
 })
 
-export default modules
+export default modules 

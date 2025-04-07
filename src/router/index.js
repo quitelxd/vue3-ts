@@ -1,7 +1,7 @@
-import {createRouter, createWebHistory, RouteRecordRaw, createWebHashHistory} from "vue-router";
+import {createRouter, createWebHistory, createWebHashHistory} from "vue-router";
 import Layout from "@/views/Layout.vue";
 
-export const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes = [
     {
         path: "/login",
         component: () => import('@/views/Login.vue'),
@@ -124,6 +124,14 @@ export const constantRoutes: RouteRecordRaw[] = [
                             name: "Openlayer",
                             icon: "iconfont icon-OpenLayers"
                         },
+                    },
+                    {
+                        path: 'cesium',
+                        component: () => import('@/views/map/Cesium.vue'),
+                        meta: {
+                            name: "Cesium",
+                            icon: "iconfont icon-OpenLayers"
+                        },
                     }
                 ]
             },
@@ -197,11 +205,11 @@ export const constantRoutes: RouteRecordRaw[] = [
             },
         ]
     },
-
 ];
+
 const router = createRouter({
     history: process.env.VUE_APP_TYPE === 'github' ? createWebHashHistory() : createWebHistory(process.env.BASE_URL),
     routes: constantRoutes
 });
 
-export default router
+export default router 

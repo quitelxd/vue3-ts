@@ -4,20 +4,14 @@
     </div>
 </template>
 
-<script lang="ts">
-    import E from 'wangeditor'
+<script setup>
+import E from 'wangeditor'
+import { onMounted } from 'vue'
 
-    import {defineComponent, onMounted} from 'vue';
-
-    export default defineComponent({
-        name: "WangEditor",
-        setup() {
-            onMounted(() => {
-                const editor = new E('#editor')
-                editor.create()
-            })
-        }
-    })
+onMounted(() => {
+    const editor = new E('#editor')
+    editor.create()
+})
 </script>
 
 <style scoped>

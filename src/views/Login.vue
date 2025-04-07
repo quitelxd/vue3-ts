@@ -19,52 +19,44 @@
     </div>
 </template>
 
+<script setup>
+import { reactive, toRefs, ref } from 'vue'
+import { setToken } from "@/utils"
+import { useRouter, useRoute } from "vue-router"
 
-<script lang="ts">
-    import {defineComponent, reactive, toRefs, ref} from 'vue';
-    import {setToken} from "@/utils";
-    import {useRouter,useRoute} from "vue-router"
+const router = useRouter()
+const route = useRoute()
+const formRef = ref(null)
 
-    export default defineComponent({
-        name: "Login",
-        setup() {
-            let router = useRouter();
-            let route = useRoute();
-            let formRef = ref(null)
-            let data = reactive({
-                form: {
-                    name: "",
-                    password: ""
-                },
-                rules: {
-                    name: [
-                        {required: true, message: '请输入用户名', trigger: 'blur'},
-                    ],
-                    password: [
-                        {required: true, message: '请输入密码', trigger: 'blur'},
-                    ],
-                }
-            })
-            const submit = (): void => {
-                (formRef.value as any).validate((valid: boolean) => {
-                    if (valid) {
-                        let redirect = route.query.redirect ? route.query.redirect : "/"
-                        setToken("akjsdfhakjdhfkasdfjkhaslkdjf");
-                        router.push((redirect as string))
-                        // path: state.redirect || '/',
-                    } else {
-                        alert("填啊！！！")
-                        return false
-                    }
-                })
-            }
-            return {
-                ...toRefs(data),
-                formRef,
-                submit
-            }
+const data = reactive({
+    form: {
+        name: "",
+        password: ""
+    },
+    rules: {
+        name: [
+            {required: true, message: '请输入用户名', trigger: 'blur'},
+        ],
+        password: [
+            {required: true, message: '请输入密码', trigger: 'blur'},
+        ],
+    }
+})
+
+const { form, rules } = toRefs(data)
+
+const submit = () => {
+    formRef.value.validate((valid) => {
+        if (valid) {
+            const redirect = route.query.redirect ? route.query.redirect : "/"
+            setToken("akjsdfhakjdhfkasdfjkhaslkdjf")
+            router.push(redirect)
+        } else {
+            alert("填啊！！！")
+            return false
         }
     })
+}
 </script>
 
 <style scoped lang="less">

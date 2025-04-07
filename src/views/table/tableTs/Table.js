@@ -1,23 +1,12 @@
-interface Table {
-    page: number,
-    size: number,
-    total?: number
-}
-
-export const Table: Table = {
+export const Table = {
     page: 1,
     size: 10,
     total: 999
-    // 组件的“其余部分”
-}
-
-interface Search {
-    name: string,
-    address: string
+    // 组件的"其余部分"
 }
 
 class TableFun {
-    static getData(table: Table, search?: Search): any {
+    static getData(table, search) {
         console.log(table, search)
         const data = [{
             date: '2021年7月1日 08:50:07',
@@ -30,9 +19,9 @@ class TableFun {
         return data;
     }
 
-    static search(table: Table, search: Search): any {
+    static search(table, search) {
         return TableFun.getData(table, search);
     }
 }
 
-export {TableFun}
+export {TableFun} 

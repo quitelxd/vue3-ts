@@ -7,61 +7,49 @@
         </div>
     </div>
 </template>
-<script lang="ts">
-    import {defineComponent, reactive, toRefs, onMounted, ref} from 'vue';
-    import * as THREE from 'three';
-    // import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
-    import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-    let scene = new THREE.Scene();
-    export default defineComponent({
-        name: 'Index',
-        setup() {
-            const threeBox = ref();
-            const data = reactive({})
-            onMounted(() => {
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-                const renderer = new THREE.WebGLRenderer();
-                renderer.setSize(threeBox.value.clientWidth, threeBox.value.clientHeight);
-                threeBox.value.appendChild(renderer.domElement);
+<script setup>
+import { onMounted, ref } from 'vue'
+import * as THREE from 'three'
+// import {OrbitControls} from 'three/addons/controls/OrbitControls.js'
 
-                const geometry = new THREE.BoxGeometry(1, 1, 1);
-                const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-                const cube = new THREE.Mesh(geometry, material);
-                scene.add(cube);
+const scene = new THREE.Scene()
+const threeBox = ref()
 
-                camera.position.z = 5;
-                renderer.render(scene, camera);
+onMounted(() => {
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setSize(threeBox.value.clientWidth, threeBox.value.clientHeight)
+    threeBox.value.appendChild(renderer.domElement)
 
-                // const loader = new GLTFLoader();
-                // loader.load('/threeModels/face.glb', function (gltf) {
-                //     scene.add(gltf.scene);
-                //     renderer.render(scene, camera);
-                // }, undefined, function (error) {
-                //     console.error(error);
-                //
-                // });
-                function animate() {
-                    requestAnimationFrame(animate);
-                    renderer.render(scene, camera);
-                    cube.rotation.x += 0.01;
-                    cube.rotation.y += 0.01;
-                }
+    const geometry = new THREE.BoxGeometry(1, 1, 1)
+    const material = new THREE.MeshBasicMaterial({color: 0x00ff00})
+    const cube = new THREE.Mesh(geometry, material)
+    scene.add(cube)
 
-                animate();
-            })
+    camera.position.z = 5
+    renderer.render(scene, camera)
 
-            function loadModel() {
+    // const loader = new GLTFLoader();
+    // loader.load('/threeModels/face.glb', function (gltf) {
+    //     scene.add(gltf.scene);
+    //     renderer.render(scene, camera);
+    // }, undefined, function (error) {
+    //     console.error(error);
+    //
+    // });
+    function animate() {
+        requestAnimationFrame(animate)
+        renderer.render(scene, camera)
+        cube.rotation.x += 0.01
+        cube.rotation.y += 0.01
+    }
 
-            }
+    animate()
+})
 
-            return {
-                ...toRefs(data),
-                threeBox,
-                loadModel
-            };
-        },
-    });
+const loadModel = () => {
+}
 </script>
 
 <style scoped lang='less'>

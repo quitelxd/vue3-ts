@@ -4,15 +4,7 @@
     </div>
 </template>
 
-<script lang="ts">
-
-    import {defineComponent} from 'vue';
-
-    export default defineComponent({
-        name: "EasyTable",
-        components:{
-        }
-    })
+<script setup>
 </script>
 
 <style scoped>

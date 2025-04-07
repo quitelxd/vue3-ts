@@ -2,22 +2,15 @@
     <router-view/>
 </template>
 
-<script lang="ts">
-    import {defineComponent,provide} from 'vue';
-    import * as echarts from 'echarts';
+<script setup>
+import * as echarts from 'echarts';
+import { provide } from 'vue';
 
-    export default defineComponent({
-        name: 'App',
-        setup(){
-            provide('echarts',echarts)//provid
-        },
-        components: {
-        }
-    });
+provide('echarts', echarts)
 </script>
 
 <style lang="less">
-    #app{
+    #app {
 
     }
 </style>

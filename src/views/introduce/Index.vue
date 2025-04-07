@@ -33,29 +33,21 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent, reactive, toRefs} from 'vue';
-    import {getTest} from "@/api/test";
+<script setup>
+import { reactive, toRefs } from 'vue'
+import { getTest } from "@/api/test"
 
-    export default defineComponent({
-        name: 'Introduce',
-        setup() {
-            let data = reactive({
-                listData: []
-            })
-            getTest({
-                postId: "1"
-            }).then(res => {
-                (data.listData as any) = res;
-            })
-            return {
-                ...toRefs(data)
-            }
-        },
-        created() {
-        },
-        components: {}
-    });
+const data = reactive({
+    listData: []
+})
+
+getTest({
+    postId: "1"
+}).then(res => {
+    data.listData = res
+})
+
+const { listData } = toRefs(data)
 </script>
 
 <style scoped lang="less">

@@ -5,15 +5,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup>
+import { defineProps } from 'vue'
 
-export default defineComponent({
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
-});
+defineProps({
+  msg: String
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

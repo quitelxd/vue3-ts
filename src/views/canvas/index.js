@@ -1,30 +1,24 @@
 import {fabric} from "fabric"
 
-interface Config {
-    color?: string,
-    strokeWidth?: number,
-}
-
-class Canvas implements Config {
-    canvas: any;
-    id: string;
-    color: string = "#000";
-    fontSize: number = 14;
-    offsetLeft: number = 0;
-    offsetTop: number = 0;
-    strokeWidth: number = 1;
-    currentType: string = 'free';
-    mouseFrom: any = {x: 0, y: 0};
-    mouseTo: any = {x: 0, y: 0};
-    idDrawing: boolean = false;
-    drawingObject: object | null = null;
-    isRedoing: boolean = false;
-    stateArr: any[] = [];
-    textObject: any | null;
-    imgIcon: string = '';
-
-    constructor(id: string, pId: string, config?: Config) {
+class Canvas {
+    constructor(id, pId, config) {
+        this.canvas = null;
         this.id = id;
+        this.color = "#000";
+        this.fontSize = 14;
+        this.offsetLeft = 0;
+        this.offsetTop = 0;
+        this.strokeWidth = 1;
+        this.currentType = 'free';
+        this.mouseFrom = {x: 0, y: 0};
+        this.mouseTo = {x: 0, y: 0};
+        this.idDrawing = false;
+        this.drawingObject = null;
+        this.isRedoing = false;
+        this.stateArr = [];
+        this.textObject = null;
+        this.imgIcon = '';
+
         const target = document.getElementById(id);
         const pTarget = document.getElementById(pId);
 
@@ -111,7 +105,6 @@ class Canvas implements Config {
                     case 'triangle':
                         this.initTriangle();
                         break;
-
                     default:
                         break
                 }
@@ -340,10 +333,10 @@ class Canvas implements Config {
         document.body.removeChild(link)
     }
 
-    colorChange(color: string) {
+    colorChange(color) {
         this.color = color;
         this.canvas.freeDrawingBrush.color = color
     }
 }
 
-export default Canvas;
+export default Canvas; 

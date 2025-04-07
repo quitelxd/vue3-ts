@@ -4,29 +4,21 @@
             <img src="../assets/logo.png" alt="">
             逆水行舟
         </div>
-        <Menu></Menu>
+        <el-scrollbar style="height: calc(100% - 51px)">
+            <Menu></Menu>
+        </el-scrollbar>
     </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent, computed,ref} from 'vue';
-    import {useStore} from 'vuex';
-    import Menu from './Menu.vue';
-    export default defineComponent({
-        name: "Aside",
-        components:{
-            Menu
-        },
-        setup(){
-            const store = useStore();
-            let leftMenu = computed(()=>{
-                return store.state.app.leftMenu
-            })
-            return {
-                leftMenu
-            }
-        }
-    })
+<script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import Menu from './Menu.vue'
+
+const store = useStore()
+const leftMenu = computed(() => {
+    return store.state.app.leftMenu
+})
 </script>
 
 <style scoped lang="less">
@@ -43,6 +35,7 @@
         box-shadow: 0 0 5px 0 #000;
         &.width{
             left: -@leftMenuWidth;
+            box-shadow: none;
         }
         .logo{
             padding: 0 10px;

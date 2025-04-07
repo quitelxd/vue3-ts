@@ -10,7 +10,6 @@ import {getToken} from "@/utils/index";
 const whiteList = ['/login']
 router.beforeEach(async (to, from, next)=>{
     if(getToken()){
-
         if (to.path === '/login') {
             next({path: '/'})
         } else {
@@ -24,5 +23,4 @@ router.beforeEach(async (to, from, next)=>{
             next(`/login?redirect=${to.fullPath}`) // 否则全部重定向到登录页
         }
     }
-
-})
+}) 

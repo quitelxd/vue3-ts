@@ -42,7 +42,6 @@
                 <el-color-picker v-model="colors" class="colors"
                                  @change="colorChange"></el-color-picker>
             </div>
-
         </div>
     </div>
     <div id="canvasBox">
@@ -57,88 +56,81 @@
     </div>
 </template>
 
-<script lang="ts">
-    import {defineComponent, onMounted, ref} from 'vue'
-    import Canvas from './index'
+<script setup>
+import { onMounted, ref } from 'vue'
+import Canvas from './index'
 
-    export default defineComponent({
-        name: "Index",
-        setup() {
-            let colors = ref("red");
-            let currentType = ref("free");
-            let colorChange = () => {
-                canvas.colorChange(colors.value);
-            }
-            let canvas: any = null;
-            onMounted(() => {
-                canvas = new Canvas('drawBox', 'canvasBox', {
-                    color: "red",
-                    strokeWidth: 3
-                });
-            });
-            let selectDraw = () => {
-                currentType.value = "selectable";
-                canvas.selectDraw();
-            };
-            let lineDraw = () => {
-                currentType.value = "line";
-                canvas.lineDraw();
-            };
-            let rectDraw = () => {
-                currentType.value = "rect";
-                canvas.rectDraw();
-            };
-            let triangleDraw = () => {
-                currentType.value = "triangle";
-                canvas.triangleDraw();
-            };
-            let circleDraw = () => {
-                currentType.value = "circle";
-                canvas.circleDraw();
-            };
-            let freeDraw = () => {
-                currentType.value = "free";
-                canvas.freeDraw();
-            };
-            let clear = () => {
-                canvas.clear();
-            };
-            let textDraw = () => {
-                currentType.value = "text";
-                canvas.textDraw();
-            };
-            let unselectDraw = () => {
-                currentType.value = "unselectable";
-                canvas.unselectDraw();
-            };
-            let del = () => {
-                canvas.del();
-            };
-            let undoDraw = () => {
-                canvas.undoDraw();
-            };
-            let exportCanvas = () => {
-                canvas.exportCanvas();
-            };
-            return {
-                selectDraw,
-                lineDraw,
-                rectDraw,
-                triangleDraw,
-                circleDraw,
-                freeDraw,
-                clear,
-                textDraw,
-                unselectDraw,
-                del,
-                undoDraw,
-                exportCanvas,
-                colors,
-                colorChange,
-                currentType
-            }
-        }
+let colors = ref("red")
+let currentType = ref("free")
+let canvas = null
+
+const colorChange = () => {
+    canvas.colorChange(colors.value)
+}
+
+onMounted(() => {
+    canvas = new Canvas('drawBox', 'canvasBox', {
+        color: "red",
+        strokeWidth: 3
     })
+})
+
+const selectDraw = () => {
+    currentType.value = "selectable"
+    canvas.selectDraw()
+}
+
+const lineDraw = () => {
+    currentType.value = "line"
+    canvas.lineDraw()
+}
+
+const rectDraw = () => {
+    currentType.value = "rect"
+    canvas.rectDraw()
+}
+
+const triangleDraw = () => {
+    currentType.value = "triangle"
+    canvas.triangleDraw()
+}
+
+const circleDraw = () => {
+    currentType.value = "circle"
+    canvas.circleDraw()
+}
+
+const freeDraw = () => {
+    currentType.value = "free"
+    canvas.freeDraw()
+}
+
+const clear = () => {
+    canvas.clear()
+}
+
+const textDraw = () => {
+    currentType.value = "text"
+    canvas.textDraw()
+}
+
+const unselectDraw = () => {
+    currentType.value = "unselectable"
+    canvas.unselectDraw()
+}
+
+const del = () => {
+    canvas.del()
+}
+
+const undoDraw = () => {
+    currentType.value = "undo"
+    canvas.undoDraw()
+}
+
+const exportCanvas = () => {
+    canvas.exportCanvas()
+}
 </script>
 
 <style scoped lang="less">
@@ -185,5 +177,4 @@
             }
         }
     }
-
 </style>
