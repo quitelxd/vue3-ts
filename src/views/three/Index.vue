@@ -95,7 +95,9 @@ const loadModel = async (modelName) => {
         error.value = ''
         
         const loader = new GLTFLoader()
-        const modelPath = modelName === 'face' ? '/threeModels/face.glb' : '/threeModels/one.glb'
+        // 使用相对路径加载模型
+        const modelPath = modelName === 'face' ? './threeModels/face.glb' : './threeModels/one.glb'
+        console.log('正在加载模型：', modelPath) // 添加日志
         const gltf = await new Promise((resolve, reject) => {
             loader.load(
                 modelPath,
@@ -108,7 +110,10 @@ const loadModel = async (modelName) => {
                 (xhr) => {
                     console.log((xhr.loaded / xhr.total * 100) + '% loaded')
                 },
-                (err) => reject(err)
+                (err) => {
+                    console.error('模型加载错误：', err)
+                    reject(err)
+                }
             )
         })
 

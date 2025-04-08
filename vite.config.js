@@ -9,12 +9,23 @@ export default defineConfig(({ command, mode }) => {
   const isGithub = mode === 'github'
   const outDir = isGithub ? 'docs' : 'dist'
 
-  // 在构建完成后复制 Cesium 资源
+  // 在构建完成后复制资源
   if (command === 'build') {
+    // 复制 Cesium 资源
     const cesiumSource = 'node_modules/cesium/Build/Cesium'
     const cesiumDest = `${outDir}/cesium`
     if (!fs.existsSync(cesiumDest)) {
       fs.copySync(cesiumSource, cesiumDest)
+    }
+
+    // 复制模型文件
+    const modelsSource = 'public/threeModels'
+    const modelsDest = `${outDir}/threeModels`
+    if (fs.existsSync(modelsSource)) {
+      fs.copySync(modelsSource, modelsDest)
+      console.log('3D models copied successfully')
+    } else {
+      console.warn('Models directory not found:', modelsSource)
     }
   }
 
