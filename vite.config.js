@@ -2,18 +2,27 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import cesium from 'vite-plugin-cesium'
 import path from 'path'
+import fs from 'fs-extra'
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const isGithub = mode === 'github'
+  const outDir = isGithub ? 'docs' : 'dist'
+
+  // 在构建完成后复制 Cesium 资源
+  if (command === 'build') {
+    const cesiumSource = 'node_modules/cesium/Build/Cesium'
+    const cesiumDest = `${outDir}/cesium`
+    if (!fs.existsSync(cesiumDest)) {
+      fs.copySync(cesiumSource, cesiumDest)
+    }
+  }
+
   return {
     base: isGithub ? './' : env.VITE_BASE_URL,
     plugins: [
       vue(),
-      cesium({
-        devMinify: true,
-        rebuildCesium: true
-      })
+      cesium()
     ],
     resolve: {
       alias: {
@@ -43,7 +52,7 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     build: {
-      outDir: isGithub ? 'docs' : 'dist',
+      outDir,
       sourcemap: command === 'serve',
       assetsDir: 'assets',
       rollupOptions: {

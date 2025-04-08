@@ -31,15 +31,16 @@
     "wangeditor": "^4.7.15"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.1.4",
-    "vite-plugin-cesium": "^1.2.22",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
+    "fs-extra": "^11.3.0",
     "less": "^4.2.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "vite-plugin-cesium": "^1.2.22"
   },
   "eslintConfig": {
     "root": true,
