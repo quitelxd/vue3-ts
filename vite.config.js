@@ -6,7 +6,7 @@ import path from 'path'
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   return {
-    base: env.VITE_BASE_URL,
+    base: mode === 'github' ? '/vue3-ts/' : env.VITE_BASE_URL,
     plugins: [
       vue(),
       cesium()
@@ -40,7 +40,15 @@ export default defineConfig(({ command, mode }) => {
     },
     build: {
       outDir: mode === 'github' ? 'docs' : 'dist',
-      sourcemap: command === 'serve'
+      sourcemap: command === 'serve',
+      assetsDir: 'assets',
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'assets/[name]-[hash].js',
+          entryFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]'
+        }
+      }
     }
   }
 }) 
