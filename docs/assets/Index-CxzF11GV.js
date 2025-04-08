@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as c}from"./index-D72yaUCH.js";window.CESIUM_BASE_URL="/vue3-ts/cesium/";const o={},n={style:{width:"100%",height:"30px",background:"#000"}};function s(_,r){return c(),t("div",n)}const d=e(o,[["render",s]]);export{d as default};

@@ -217,9 +217,7 @@ export const constantRoutes = [
 ];
 
 const router = createRouter({
-    history: import.meta.env.VITE_APP_TYPE === 'github' 
-        ? createWebHashHistory()
-        : createWebHistory(getBaseUrl()),
+    history: createWebHashHistory(),
     routes: constantRoutes
 });
 

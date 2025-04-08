@@ -1,1 +1,0 @@
-import{_ as o,k as r,e as t,o as c}from"./index-D72yaUCH.js";window.CESIUM_BASE_URL="/vue3-ts/cesium/";const n={};function s(_,a){const e=t("router-view");return c(),r(e)}const u=o(n,[["render",s]]);export{u as default};

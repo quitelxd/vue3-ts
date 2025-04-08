@@ -3,10 +3,10 @@
 </template>
 
 <script setup>
-import * as Cesium from 'cesium'
-import "cesium/Build/Cesium/Widgets/widgets.css";
 import { onMounted, onBeforeUnmount } from 'vue';
 import { getBaseUrl } from '@/utils/env';
+import * as Cesium from 'cesium';
+import "cesium/Build/Cesium/Widgets/widgets.css";
 
 let viewer = null;
 
@@ -27,6 +27,11 @@ async function initTerrainProvider() {
  * @returns {Cesium.Viewer} 返回 viewer 实例
  */
 function initViewer(terrainProvider) {
+    if (!window.Cesium) {
+        console.error('Cesium is not loaded');
+        return null;
+    }
+    
     return new Cesium.Viewer('cesiumContainer', {
         terrainProvider: terrainProvider,
         animation: true,           // 启用动画控件
@@ -244,9 +249,27 @@ onMounted(async () => {
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkMDc2Zjk4Mi0zNzE2LTQ1N2ItYmJiZi03MDBjNzE0OTRlN2UiLCJpZCI6MjI2NTIzLCJpYXQiOjE3NDQwODEyNzh9.ZB7sD_ip91ZAppy29yef0-8JFjpSPmtT3chRIZ44Gak';
 
     try {
+        // 等待 Cesium 加载完成
+        await new Promise(resolve => {
+            if (window.Cesium) {
+                resolve();
+            } else {
+                const checkCesium = setInterval(() => {
+                    if (window.Cesium) {
+                        clearInterval(checkCesium);
+                        resolve();
+                    }
+                }, 100);
+            }
+        });
+
         // 初始化地形和查看器
         const terrainProvider = await initTerrainProvider();
         viewer = initViewer(terrainProvider);
+
+        if (!viewer) {
+            throw new Error('Failed to initialize viewer');
+        }
 
         // 加载3D模型资源
         const resource = await Cesium.IonResource.fromAssetId(2648381);
