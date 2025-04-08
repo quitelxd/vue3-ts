@@ -1,1 +1,0 @@
-import{_ as o,k as n,e as r,o as c}from"./index-B4e2lTVj.js";window.CESIUM_BASE_URL="/cesium/";const t={};function _(s,a){const e=r("router-view");return c(),n(e)}const f=o(t,[["render",_]]);export{f as default};

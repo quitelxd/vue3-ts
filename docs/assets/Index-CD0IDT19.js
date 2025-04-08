@@ -1,0 +1,1 @@
+import{_ as e,c,o as t}from"./index-a9cQj7t6.js";window.CESIUM_BASE_URL="cesium/";const o={},n={style:{width:"100%",height:"30px",background:"#000"}};function s(_,r){return t(),c("div",n)}const d=e(o,[["render",s]]);export{d as default};

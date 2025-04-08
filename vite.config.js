@@ -5,17 +5,20 @@ import path from 'path'
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const isGithub = mode === 'github'
   return {
-    base: mode === 'github' ? '/vue3-ts/' : env.VITE_BASE_URL,
+    base: isGithub ? './' : env.VITE_BASE_URL,
     plugins: [
       vue(),
-      cesium()
+      cesium({
+        devMinify: true,
+        rebuildCesium: true
+      })
     ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
-        'public': path.resolve(__dirname, 'public'),
-        'cesium': path.resolve(__dirname, 'node_modules/cesium')
+        'public': path.resolve(__dirname, 'public')
       }
     },
     css: {
@@ -40,7 +43,7 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     build: {
-      outDir: mode === 'github' ? 'docs' : 'dist',
+      outDir: isGithub ? 'docs' : 'dist',
       sourcemap: command === 'serve',
       assetsDir: 'assets',
       rollupOptions: {
