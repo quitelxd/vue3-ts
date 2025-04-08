@@ -9,7 +9,10 @@ export default defineConfig(({ command, mode }) => {
     base: mode === 'github' ? '/vue3-ts/' : env.VITE_BASE_URL,
     plugins: [
       vue(),
-      cesium()
+      cesium({
+        rebuildCesium: true,
+        devMinify: true
+      })
     ],
     resolve: {
       alias: {
