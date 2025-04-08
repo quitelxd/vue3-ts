@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory, createWebHashHistory} from "vue-router";
 import Layout from "@/views/Layout.vue";
+import { getBaseUrl } from '@/utils/env';
 
 export const constantRoutes = [
     {
@@ -129,7 +130,15 @@ export const constantRoutes = [
                         path: 'cesium',
                         component: () => import('@/views/map/Cesium.vue'),
                         meta: {
-                            name: "Cesium",
+                            name: "Cesium基础地图",
+                            icon: "iconfont icon-OpenLayers"
+                        },
+                    },
+                    {
+                        path: 'cesium3d',
+                        component: () => import('@/views/map/Cesium3d.vue'),
+                        meta: {
+                            name: "Cesium3D",
                             icon: "iconfont icon-OpenLayers"
                         },
                     }
@@ -208,7 +217,9 @@ export const constantRoutes = [
 ];
 
 const router = createRouter({
-    history: process.env.VUE_APP_TYPE === 'github' ? createWebHashHistory() : createWebHistory(process.env.BASE_URL),
+    history: import.meta.env.VITE_APP_TYPE === 'github' 
+        ? createWebHashHistory(getBaseUrl())
+        : createWebHistory(getBaseUrl()),
     routes: constantRoutes
 });
 

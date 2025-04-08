@@ -1,11 +1,11 @@
 <template>
-    <el-submenu :index="item.path" v-if="item.children && item.children.length >= 0">
+    <el-sub-menu :index="item.path" v-if="item.children && item.children.length > 0">
         <template #title>
             <i :class="item.meta.icon"></i>
             <span>{{item.meta.name}}</span>
         </template>
         <MenuItem v-for="child in item.children" :p-path="item.path" :item="child" :key="child.path"></MenuItem>
-    </el-submenu>
+    </el-sub-menu>
     <el-menu-item :index="item.path" v-else>
         <div @click="toRoute(item.path)">
             <i :class="item.meta.icon"></i>
