@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as c}from"./index-B-dNTfkq.js";const o={},n={style:{width:"100%",height:"30px",background:"#000"}};function r(s,_){return c(),t("div",n)}const d=e(o,[["render",r]]);export{d as default};
