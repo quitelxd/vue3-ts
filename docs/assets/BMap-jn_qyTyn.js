@@ -1,0 +1,1 @@
+import{_ as e,c,o as n}from"./index-D72yaUCH.js";window.CESIUM_BASE_URL="/vue3-ts/cesium/";const o={};function t(r,s){return n(),c("div",null," BMap ")}const a=e(o,[["render",t]]);export{a as default};
