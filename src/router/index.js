@@ -131,7 +131,7 @@ export const constantRoutes = [
                         component: () => import('@/views/map/Cesium.vue'),
                         meta: {
                             name: "Cesium基础地图",
-                            icon: "iconfont icon-OpenLayers"
+                            icon: "iconfont icon-ditu1"
                         },
                     },
                     {
@@ -139,7 +139,7 @@ export const constantRoutes = [
                         component: () => import('@/views/map/Cesium3d.vue'),
                         meta: {
                             name: "Cesium3D",
-                            icon: "iconfont icon-OpenLayers"
+                            icon: "iconfont icon-ditu1"
                         },
                     }
                 ]
@@ -175,7 +175,7 @@ export const constantRoutes = [
                 component: () => import('@/views/css/Index.vue'),
                 meta: {
                     name: "Css问题",
-                    icon: "iconfont icon-alibaba1193368easyiconnet"
+                    icon: "iconfont icon-CSS"
                 },
             },
             {
@@ -183,8 +183,25 @@ export const constantRoutes = [
                 component: () => import('@/views/three/Index.vue'),
                 meta: {
                     name: "Three.js",
-                    icon: "iconfont icon-alibaba1193368easyiconnet"
+                    icon: "iconfont icon-ThreeJs"
                 },
+                children:[
+                    {
+                        path: "/basis",
+                        component: () => import('@/views/three/Basis.vue'),
+                        meta: {
+                            name: "基础加载模型",
+                            icon: "iconfont icon-jiandanmoxing"
+                        },
+                    },{
+                        path: "/move",
+                        component: () => import('@/views/three/Move.vue'),
+                        meta: {
+                            name: "动画",
+                            icon: "iconfont icon-a-zujiantianchong_huaban1fuben7"
+                        },
+                    },
+                ]
             },
             {
                 path: "/flow",

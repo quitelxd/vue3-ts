@@ -6,8 +6,8 @@
         </template>
         <MenuItem v-for="child in item.children" :p-path="item.path" :item="child" :key="child.path"></MenuItem>
     </el-sub-menu>
-    <el-menu-item :index="item.path" v-else>
-        <div @click="toRoute(item.path)">
+    <el-menu-item :index="item.path" v-else @click="toRoute(item.path)">
+        <div >
             <i :class="item.meta.icon"></i>
             <span>{{item.meta.name}}</span>
         </div>
