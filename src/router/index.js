@@ -141,6 +141,14 @@ export const constantRoutes = [
                             name: "Cesium3D",
                             icon: "iconfont icon-ditu1"
                         },
+                    },
+                    {
+                        path: 'mars3D',
+                        component: () => import('@/views/map/Mars3D.vue'),
+                        meta: {
+                            name: "Mars3D",
+                            icon: "iconfont icon-mars"
+                        },
                     }
                 ]
             },

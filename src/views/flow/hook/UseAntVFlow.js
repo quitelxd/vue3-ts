@@ -1,4 +1,4 @@
-import {Graph, Shape} from '@antv/x6'
+import {Graph} from '@antv/x6'
 
 // 控制连接桩显示/隐藏
 export const showPorts = (ports, show) => {
@@ -210,25 +210,57 @@ export function createBlock() {
 }
 
 export function block(graph) {
-    return [
+    const r1 = graph.createNode({
+        shape: 'custom-rect',
+        label: '开始',
+    });
+    
+    const r2 = graph.createNode({
+        shape: 'custom-rect',
+        label: '过程',
+    });
+    
+    const r3 = graph.createNode({
+        shape: 'custom-polygon',
+        label: '决策',
+        points: '40,0 80,40 40,80 0,40',
+    });
+    
+    const r4 = graph.createNode({
+        shape: 'custom-circle',
+        label: '开始',
+    });
+    
+    const r5 = graph.createNode({
+        shape: 'custom-circle',
+        label: '结束',
+    });
+    
+    const r6 = graph.createNode({
+        shape: 'custom-rect',
+        label: '子过程',
+    });
+    
+    const imageShapes = [
         {
-            label: '开始',
-            shape: 'custom-circle',
+            label: '数据库',
+            image: 'https://gw.alipayobjects.com/zos/bmw-prod/687b6cb9-4b97-42a6-96d0-34b3099133ac.svg',
         },
         {
-            label: '过程',
-            shape: 'custom-rect',
+            label: '服务器',
+            image: 'https://gw.alipayobjects.com/zos/bmw-prod/f00c3de4-3b8c-49fe-9e2c-f69a179b3955.svg',
         },
         {
-            label: '决策',
-            shape: 'custom-polygon',
-            points: '40,0 80,40 40,80 0,40',
+            label: '手机',
+            image: 'https://gw.alipayobjects.com/zos/bmw-prod/25fb0c33-a936-4354-9876-25ef6b5d7d74.svg',
         },
         {
-            label: '结束',
-            shape: 'custom-circle',
+            label: '用户',
+            image: 'https://gw.alipayobjects.com/zos/bmw-prod/21b19468-fbb8-45d7-a8e4-4176f2ed6dad.svg',
         },
-    ]
+    ];
+    
+    return { r1, r2, r3, r4, r5, r6, imageShapes };
 }
 
 export function reverseObject(object) {
