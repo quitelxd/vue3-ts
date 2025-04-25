@@ -9,6 +9,9 @@
                     <el-input v-model="form.password"></el-input>
                 </el-form-item>
             </el-form>
+            <el-row :gutter="10">
+                <el-col :span="6"></el-col>
+            </el-row>
             <div style="text-align: right">
                 填就行了
             </div>
@@ -20,10 +23,12 @@
 </template>
 
 <script setup>
-import { reactive, toRefs, ref } from 'vue'
+import { reactive, toRefs, ref ,defineComponent } from 'vue'
 import { setToken } from "@/utils"
 import { useRouter, useRoute } from "vue-router"
-
+defineComponent({
+    name: "LoginIndex"
+})
 const router = useRouter()
 const route = useRoute()
 const formRef = ref(null)

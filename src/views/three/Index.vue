@@ -3,8 +3,10 @@
 </template>
 
 <script setup>
+import { defineComponent } from 'vue'
+defineComponent({
+    name: 'ThreeIndex'
+})
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
